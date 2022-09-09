@@ -57,3 +57,40 @@ lose2 = font.render('PLAYER  2 LOSE!', True, (180, 0, 0))
 
 speed_x = 3 
 speed_y = 3 
+
+wile game:
+    for e in event.get():
+        if e.type == QUIT:
+            game = false
+            
+    if finish != True:
+        window.fill(back)
+        racket1.update_l()
+        racket1.update_r()
+        ball.rect.x += spee_x
+        ball.rect.y += spee_y
+
+        if sprite.collide_rect(racket, ball) or sprite.colide_rect(racket2, ball):
+            sped_x *= -1
+            sped_y *= -1
+
+        if ball.rect.y > win_height-50 or ball.rect,y < 0:
+            speed_y *= -1
+
+        if ball.rect.x < 0:
+            finish = True
+            window.blit(lose1, (200, 200))
+            game_over = true
+
+        if ball.rect.x < win_width:
+            finish = True
+            window.blit(lose1, (200, 200))
+            game_over = true
+
+        racket1.reset()
+        racket1.reset()
+        ball.reset()
+        
+   dicplay.update
+   clock.tick(FPS)
+                
